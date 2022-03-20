@@ -19,64 +19,42 @@
   </header>
   <!--空白占位行-->
   <div class="row mt-5"></div>
-
-    <!--posts-->
-    <div class="container">
-      <div class="row">
-        <div class="col-6 p-2">
-          <div class="card">
-            <img class="card-img" src="https://img0.baidu.com/it/u=470859303,439764315&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=666" alt="Card image">
-            <div class="card-img-overlay d-flex flex-column justify-content-end py-0" >
-              <div class="row">
-                <div class="col-4 d-flex align-items-center"> <img class="rounded-circle" src="https://static.pingendo.com/img-placeholder-2.svg" width="30"> </div>
-                <div class="col-8">
-                  <p class="mt-2 small" >来逛我的家吧 </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 p-2">
-          <div class="card">
-            <img class="card-img" src="https://img0.baidu.com/it/u=4214525019,2565644538&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="Card image">
-            <div class="card-img-overlay d-flex flex-column justify-content-end py-0" >
-              <div class="row">
-                <div class="col-4 d-flex align-items-center"> <img class="rounded-circle" src="https://static.pingendo.com/img-placeholder-2.svg" width="30"> </div>
-                <div class="col-8">
-                  <p class="mt-2 small" >来逛我的家吧 </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 p-2">
-          <div class="card">
-            <img class="card-img" src="https://img0.baidu.com/it/u=1477631340,2078378544&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=666" alt="Card image">
-            <div class="card-img-overlay d-flex flex-column justify-content-end py-0" >
-              <div class="row">
-                <div class="col-4 d-flex align-items-center"> <img class="rounded-circle" src="https://static.pingendo.com/img-placeholder-2.svg" width="30"> </div>
-                <div class="col-8">
-                  <p class="mt-2 small" >来逛我的家吧 </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 p-2">
-          <div class="card">
-            <img class="card-img" src="https://img2.baidu.com/it/u=1203394123,3610230317&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=751" alt="Card image">
-            <div class="card-img-overlay d-flex flex-column justify-content-end py-0" >
-              <div class="row">
-                <div class="col-4 d-flex align-items-center"> <img class="rounded-circle" src="https://static.pingendo.com/img-placeholder-2.svg" width="30"> </div>
-                <div class="col-8">
-                  <p class="mt-2 small" >来逛我的家吧 </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<!--导航-->
+  <div class="container my-3">
+    <div class="row">
+      <div class="col d-flex flex-column justify-content-center"> 
+        <small class="text-center font-weight-bold">距离</small>
+      </div>
+      <div class="col d-flex flex-column justify-content-center"> 
+        <small class="text-center font-weight-bold">价格</small>
+      </div>
+      <div class="col d-flex flex-column justify-content-center"> 
+        <small class="text-center font-weight-bold">评分</small>
       </div>
     </div>
+  </div>
+
+  <!--posts-->
+  <div class="container">
+    <div id="posts" class="row">
+      <a href="factory_info.html?rec=11111">
+        <div class="card px-4 py-2">
+          <div class="row no-gutters">
+            <div class="col-4">
+              <img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-4.svg">
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </a>
+    </div>
+  </div>
   <!--空白占位行-->
   <div class="row mt-5"></div>
   <footer>
@@ -106,8 +84,9 @@
       </div>
     </nav>
   </footer>
-  
+
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/factory.js"></script>
  
   <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
   <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
