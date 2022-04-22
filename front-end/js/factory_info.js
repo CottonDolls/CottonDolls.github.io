@@ -3,7 +3,7 @@ $(function(){
   //Get parameter from URL
   //alert (rec)
 
-  let url = 'http://127.0.0.1:5000/factoryInfo/'+rec
+  let url = 'http://readymode.pythonanywhere.com/factoryInfo/'+rec
   let h = new Headers()
 
   let req_text = new Request(url,{
