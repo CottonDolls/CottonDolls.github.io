@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
-  alert('document ready')
-  let url = 'http://127.0.0.1:5000/plaza'
+  //alert('document ready')
+  let url = 'http://readymode.pythonanywhere.com/plaza'
   let h = new Headers()
   /*
   h.append('Authorization',auth)
@@ -24,23 +24,25 @@ $(document).ready(function(){
       }
   })
   .then((data)=>{   
-    //console.log(data.back)
+    console.log(data.back)
     //console.log(data.back[0].fields.Title)
     data.back.forEach(element => {
-      element = element.fields
+      //element = element.fields
       $("#posts").append(
         `<div class="col-6 p-2">
-          <div class="card"> <img class="card-img-top" src="${element.Image[0].url}" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text small">${element.Title}</p>
-              <div class="row">
-                <div class="col-4 d-flex align-items-center"> <img class="rounded-circle" src="https://static.pingendo.com/img-placeholder-2.svg" width="30"> </div>
-                <div class="col-8 d-flex align-items-center">
-                  <p class="mt-2 small" >${element.Poster} </p>
+          <a href="post.html?rec=${element.id}">
+            <div class="card"> <img class="card-img-top" src="${element.fields.Image[0].url}" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text small">${element.fields.Title}</p>
+                <div class="row">
+                  <div class="col-4 d-flex align-items-center"> <img class="rounded-circle" src="https://static.pingendo.com/img-placeholder-2.svg" width="30"> </div>
+                  <div class="col-8 d-flex align-items-center">
+                    <p class="mt-2 small" >${element.fields.Poster} </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>`)
     });
   })

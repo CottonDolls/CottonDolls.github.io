@@ -146,6 +146,26 @@ def get_user(current_user):
     
     return jsonify(resp['fields'])
 
+@app.route('/user_post',methods=['GET'])
+@token_required
+def get_user_post(current_user):
+
+    print('user in post'+ current_user)
+    url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/tblNWDhntqa4U0q5c?filterByFormula=Poster_rec%3D%22"+current_user+"%22"
+    #"https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/tblG4Gox7SQ51AGew?filterByFormula=UserName%3D%22"+auth.username+"%22"
+
+    headers = {
+        'Authorization': 'Bearer '+AIRTABLE_KEY,
+    }
+
+    r = requests.get(url, headers=headers)
+    print("Status Code for posts:",r.status_code)
+
+    resp = r.json()
+    #print(resp)
+
+    return jsonify({'back':resp['records']})
+
 @app.route('/plaza',methods=['GET'])
 def plaza():
     url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Plaza"
@@ -165,6 +185,7 @@ def plaza():
 
 @app.route('/factory',methods=['GET'])
 def factory():
+    print("-----------------crafter-----------------")
     url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Factory"
 
     headers = {
@@ -189,7 +210,7 @@ def factoryInfo(recID):
     url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Factory/"+recID
 
     headers = {
-        'Authorization': 'Bearer keyl5xokrjV2hQNZz',
+        'Authorization': 'Bearer '+AIRTABLE_KEY,
     }
 
     r = requests.get(url, headers=headers)
@@ -198,9 +219,9 @@ def factoryInfo(recID):
     resp = r.json()
 
     #print(resp)
-
-    rec = resp['fields']['Comments']
-    if  rec:
+   
+    try:
+        rec = resp['fields']['Comments']
         print ('idssssssssss',rec)
         url2 = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Review"
         r2 = requests.get(url2, headers=headers)
@@ -216,22 +237,16 @@ def factoryInfo(recID):
                 
         print (comments)
     
-    else:
+    except:
         comments = None
 
 
     return jsonify({'back':resp['fields'],'comments':comments})
 
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-@app.route('/upload/doll', methods=['POST'])
-def upload_doll():
-    rec = request.get_json()
-    print (rec)
-    return jsonify({'back':'got URl'})
-    '''
-    url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Factory"
+@app.route('/crafter',methods=['GET'])
+def crafter():
+    print("-----------------crafter-----------------")
+    url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Crafter"
 
     headers = {
         'Authorization': 'Bearer '+AIRTABLE_KEY,
@@ -245,7 +260,127 @@ def upload_doll():
     print(resp)
 
     return jsonify({'back':resp['records']})
+
+@app.route('/crafterInfo/<recID>',methods=['GET'])
+def crafterInfo(recID):
     '''
+    print (recID)
+    return jsonify({'back':'got recID'})
+    '''
+    url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Crafter/"+recID
+
+    headers = {
+        'Authorization': 'Bearer '+AIRTABLE_KEY,
+    }
+
+    r = requests.get(url, headers=headers)
+    print("Status Code:",r.status_code)
+
+    resp = r.json()
+
+    #print(resp)
+   
+    try:
+        rec = resp['fields']['Comments']
+        print ('idssssssssss',rec)
+        url2 = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Review"
+        r2 = requests.get(url2, headers=headers)
+        print("Status Code:",r2.status_code)
+
+        resp2 = r2.json()
+
+        comments = []
+        for i in resp2['records']:
+            for r in rec:
+                if i['id'] == r:
+                    comments.append(i['fields'])
+                
+        print (comments)
+    
+    except:
+        comments = None
+
+
+    return jsonify({'back':resp['fields'],'comments':comments})
+
+@app.route('/post/<recID>',methods=['GET'])
+def post(recID):
+    '''
+    print (recID)
+    return jsonify({'back':'got recID'})
+    '''
+    url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Plaza/"+recID
+
+    headers = {
+        'Authorization': 'Bearer '+AIRTABLE_KEY,
+    }
+
+    r = requests.get(url, headers=headers)
+    print("Status Code:",r.status_code)
+
+    resp = r.json()
+
+    #rec = resp['fields']['Comments']
+    try:
+        rec = resp['fields']['Comments']
+        print ('idssssssssss',rec)
+        url2 = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Review"
+        r2 = requests.get(url2, headers=headers)
+        print("Status Code:",r2.status_code)
+
+        resp2 = r2.json()
+
+        comments = []
+        for i in resp2['records']:
+            for r in rec:
+                if i['id'] == r:
+                    comments.append(i['fields'])
+                
+        print (comments)
+    
+    except:
+        comments = None
+
+
+    return jsonify({'back':resp['fields'],'comments':comments})
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route('/upload/doll', methods=['POST'])
+#@token_required
+#def upload_doll(current_user):
+def upload_doll():
+    rec = request.get_json()
+    print (rec)
+    #return jsonify({'back':'got URl'})
+    url = "POST https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Doll"
+
+    data ={
+      "fields": {
+        "u_id": u_id ,
+        "UserName": rec['name'],
+        "Email" : rec['email'],
+        "Password": hashed_password,
+        "Type" : rec['type']
+      }
+    }
+
+    headers = {
+    'Authorization': 'Bearer '+AIRTABLE_KEY, 'Content-Type': 'application/json'
+    }
+
+    r = requests.post(url,json=data,headers=headers)
+    print("Status Code:",r.status_code)
+
+    resp = r.json()
+
+    print(resp)
+
+    return jsonify({'back':resp['records']})
+
 
 if __name__ == '__main__':
     app.run()

@@ -1,6 +1,6 @@
 $(document).ready(function(){
   //alert('document ready')
-  let url = 'http://127.0.0.1:5000/factory'
+  let url = 'http://readymode.pythonanywhere.com/factory'
   let h = new Headers()
 
   let req_text = new Request(url,{

@@ -2,13 +2,13 @@ const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ready-mode/image/upload'
 const CLOUDINARY_UPLOAD_PRESET = 'dolllls';
 const image = document.querySelector('#fileupload');
 
-let uploadedFileUrl = ''
+let uploadedFileUrl
 image.addEventListener('change', (e) => {
   const file = e.target.files[0];
   const formData = new FormData();
   formData.append('file', file);
   formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-
+  
   fetch(CLOUDINARY_URL, {
     method: 'POST',
     body: formData,
@@ -16,14 +16,14 @@ image.addEventListener('change', (e) => {
   .then(response => response.json())
   .then((data) => {
     if (data.secure_url !== '') 
-    {
-      
+    {  
       uploadedFileUrl = data.secure_url;
       ///localStorage.setItem('passportUrl', uploadedFileUrl);
       console.log(uploadedFileUrl)
+      $('#hold').attr("src", uploadedFileUrl);
     }
   })
-    .catch(err => console.error(err));
+  .catch(err => console.error(err));
 });
 
 function upload_doll(){

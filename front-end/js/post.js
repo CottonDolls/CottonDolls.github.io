@@ -3,7 +3,7 @@ $(function(){
   //Get parameter from URL
   //alert (rec)
 
-  let url = 'http://127.0.0.1:5000/factoryInfo/'+rec
+  let url = 'http://127.0.0.1:5000/post/'+rec
   let h = new Headers()
 
   let req_text = new Request(url,{
@@ -21,16 +21,13 @@ $(function(){
       }
   })
   .then((data)=>{  
-    //console.log(data) 
-    console.log(data.comments)
+    console.log(data)
     var basic_info = data.back
     console.log( basic_info)
-    $("#title").text(basic_info.FactoryName)
-    $("#rate").text(basic_info.Rate)
-    $("#remark").text(basic_info.Remark)
+    $("#username").text(basic_info.Poster)
+    $("#title").text(basic_info.Title)
+    $("#content").text(basic_info.Content)
     $('#img').attr("src", basic_info.Image[0].url);
-    //$("#img").src(basic_info.Image[0].url)
-    alert(typeof(data.comments))
     data.comments.forEach(element => {
       $("#comments").append(`
       <div class="container px-4 my-3">
@@ -48,7 +45,7 @@ $(function(){
       </div>
       `)
     })
-
+    
   })
   .catch((err)=>{
     console.log('Erro', err.massage);

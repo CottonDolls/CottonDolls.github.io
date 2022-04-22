@@ -73,7 +73,7 @@ function login(){
   .then((data)=>{
     console.log(data);
     localStorage.setItem('token', JSON.stringify(data.token));
-    window.location.href = 'user.html';
+    window.location.href = 'index.html';
   })
   .catch((err)=>{
     console.log('Erro', err.massage);
@@ -127,18 +127,3 @@ function logout(){
   //window.location.href = 'index.html';
 }
 
-$('#myTab a:first').click(function (e) {
-  e.preventDefault()
-  console.log('tab1')
-})
-
-$('#myTab li:eq(1) a').click(function (e) {
-  e.preventDefault()
-  console.log('tab2')
-})
-
-
-$('#myTab a:last').click(function (e) {
-  e.preventDefault()
-  console.log('tab3')
-})
