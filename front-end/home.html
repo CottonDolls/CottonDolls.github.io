@@ -65,33 +65,20 @@
     </div>
   </div>
 
-  <!--posts-->
-  <div class="container">
+  <!--未登录提示-->
+  <div id="unlogged_content" class="container text-center">
     <div class="row">
-      <div class="col-6 p-2">
-        <div class="card"> <img class="card-img-top" src="https://static.pingendo.com/img-placeholder-1.svg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text small text-center">沉沉</p>
-            <p class="card-text small text-center">陆沉属性娃娃</p>
-          </div>
-        </div>
+      <div class="mx-auto col-10">
+        <h4>尚未登录！</h4>
+        <a class="btn btn-primary" href="login.html">登录</a>
+        <a class="btn btn-primary" href="register.html">注册</a>
       </div>
-      <div class="col-6 p-2">
-        <div class="card"> <img class="card-img-top" src="https://static.pingendo.com/img-placeholder-1.svg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text small text-center">沉沉</p>
-            <p class="card-text small text-center">陆沉属性娃娃</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 p-2">
-        <div class="card"> <img class="card-img-top" src="https://static.pingendo.com/img-placeholder-1.svg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text small text-center">沉沉</p>
-            <p class="card-text small text-center">陆沉属性娃娃</p>
-          </div>
-        </div>
-      </div>
+    </div>
+  </div>
+
+  <!--posts-->
+  <div id="logged_content" class="container">
+    <div id="dolls" class="row">
       <div class="col-6 p-2">
         <div class="card"> <img class="card-img-top" src="https://static.pingendo.com/img-placeholder-1.svg" alt="Card image cap">
           <div class="card-body">
@@ -133,7 +120,7 @@
   </footer>
 
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
- 
+  <script type="text/javascript" src="./js/home.js"></script>
   <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
   <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
   

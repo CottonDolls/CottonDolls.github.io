@@ -14,7 +14,7 @@ function register(){
   }
   console.log(body)
   
-  let url = 'http://127.0.0.1:5000/register'
+  let url = 'http://readymode.pythonanywhere.com/register'
   let h = new Headers()
   h.append('Accept','application/json')
   h.append('Content-type', 'application/json')
@@ -52,7 +52,7 @@ function login(){
   localStorage.setItem('BA', JSON.stringify(auth));
   console.log(auth);
 
-  let url = 'http://127.0.0.1:5000/login'
+  let url = 'http://readymode.pythonanywhere.com/login'
   let h = new Headers();
   h.append('Authorization',auth);
   h.append('Accept','application/json');
@@ -87,7 +87,7 @@ function get_user(){
   if (token != null){
     console.log(token)
 
-    let url = 'http://127.0.0.1:5000/user'
+    let url = 'http://readymode.pythonanywhere.com/user'
     
     let h = new Headers()
     h.append('Accept','application/json')

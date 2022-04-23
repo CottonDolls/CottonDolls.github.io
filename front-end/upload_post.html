@@ -31,12 +31,12 @@
       </div>
     </div>
   </div>
-
+  
   <div id="logged_content">
-      <!--submit-->
+    <!--submit-->
     <div class="row my-3 px-4 d-flex flex-row-reverse">
       <div class="btn-group"> 
-        <a onclick="upload_doll()" href="#" class="btn btn-primary mx-1">提交</a> 
+        <a onclick="upload_post()" href="#" class="btn btn-primary mx-1">提交</a> 
       </div>
     </div>
     
@@ -64,33 +64,11 @@
     <div class="container px-4 my-3">
       <div class="row">
         <div class="col-12">
-          <form class="">
-            <div class="form-group"> <label>名称</label> <input id="doll_name" type="text" class="form-control" ></div>
-            <div class="form-group"> <label>属性</label> <input id="doll_attribute" type="text" class="form-control"> </div> 
-            <!--
-            <button type="submit" class="btn btn-primary">Submit</button>
-              -->
+          <form>
+            <div class="form-group"> <input type="text" class="form-control" id="post_title"" placeholder="标题" > </div>
+            <div class="form-group"> <textarea class="form-control" id="post_content" rows="5" placeholder="内容"></textarea> </div> 
           </form>
         </div>
-      </div>
-      <div class="row" >
-          <ul class="list-unstyled ml-3">
-            <li class="py-3">
-              <label class="mr-3" for="">属性:</label>
-              <div class="btn-group btn-group-sm"> 
-                <a href="#" class="btn btn-outline-primary mx-1">Btn 1</a> 
-                <a href="#" class="btn btn-outline-primary mx-1">Btn 2</a> 
-                <a href="#" class="btn btn-outline-primary mx-1 rounded">Btn 3</a> 
-              </div>
-            </li>
-            <li class="py-3">
-              <label class="mr-3" for="">尺寸:</label>
-              <div class="btn-group btn-group-sm"> 
-                <a href="#" class="btn btn-outline-primary mx-1">已拥有</a> 
-                <a href="#" class="btn btn-outline-primary mx-1">未拥有</a>  
-              </div>
-            </li>
-          </ul>
       </div>
     </div>
   </div>
@@ -142,6 +120,6 @@
   
   <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="./js/upload.js"></script>
+  <script type="text/javascript" src="./js/upload_post.js"></script>
 </body>
 </html>

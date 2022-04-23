@@ -16,7 +16,7 @@ $(document).ready(function(){
 function get_user(token){
   console.log(token)
 
-  let url = 'http://127.0.0.1:5000/user'
+  let url = 'http://readymode.pythonanywhere.com/user'
   
   let h = new Headers()
   h.append('Accept','application/json')
@@ -66,7 +66,7 @@ function get_post(token){
   else{
     console.log(user_post,typeof(user_post))
     
-    let url = 'http://127.0.0.1:5000/user_post'
+    let url = 'http://readymode.pythonanywhere.com/user_post'
   
     let h = new Headers()
     h.append('Accept','application/json')

@@ -1,6 +1,6 @@
 $(document).ready(function(){
   //alert('document ready')
-  let url = 'http://127.0.0.1:5000/crafter'
+  let url = 'http://readymode.pythonanywhere.com/crafter'
   let h = new Headers()
 
   let req_text = new Request(url,{

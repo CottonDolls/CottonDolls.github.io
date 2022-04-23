@@ -29,7 +29,7 @@ $(function(){
     $("#remark").text(basic_info.Remark)
     $('#img').attr("src", basic_info.Image[0].url);
     //$("#img").src(basic_info.Image[0].url)
-    alert(typeof(data.comments))
+    //alert(typeof(data.comments))
     data.comments.forEach(element => {//for element in data.comment:
       $("#comments").append(`
         <div class="container px-4 my-3">

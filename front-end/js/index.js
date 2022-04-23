@@ -1,6 +1,5 @@
 
 $(document).ready(function(){
-  //alert('document ready')
   let url = 'http://readymode.pythonanywhere.com/plaza'
   let h = new Headers()
   /*
@@ -60,7 +59,7 @@ document.getElementById("group").addEventListener("click", test);
 function test(){
   let i = new Headers()
   
-  fetch('http://127.0.0.1:5000/test',{
+  fetch('http://readymode.pythonanywhere.com/test',{
     method:'GET',
     mode: 'cors',
     headers: i,
@@ -84,7 +83,7 @@ function test(){
 document.getElementById("crafter-copy").addEventListener("click", showTest);
 
 function showTest(){
-  let url = 'http://127.0.0.1:5000/bktext'
+  let url = 'http://readymode.pythonanywhere.com/bktext'
   let h = new Headers()
   /*
   h.append('Authorization',auth)

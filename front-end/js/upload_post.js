@@ -39,24 +39,24 @@ image.addEventListener('change', (e) => {
   .catch(err => console.error(err));
 });
 
-function upload_doll(){
-  let n= document.getElementById('doll_name').value
-  let a = document.getElementById('doll_attribute').value
+function upload_post(){
+  let t= document.getElementById('post_title').value
+  let c = document.getElementById('post_content').value
 
   //let t = $('input[name=r_type]:checked').val()
 
   let body = {
-    doll_name: n,
-    doll_attribute: a,
-    doll_img: uploadedFileUrl
+    post_title: t,
+    post_content: c,
+    post_img: uploadedFileUrl
   }
-  //console.log(body)
   
-  let url = 'http://readymode.pythonanywhere.com/upload/doll'
+  let url = 'http://readymode.pythonanywhere.com/upload/post'
   let h = new Headers()
   h.append('Accept','application/json')
   h.append('Content-type', 'application/json')
   h.append('client-token', `${token}`)
+
   let req = new Request(url,{
     method:'POST',
     headers:h,
@@ -81,7 +81,7 @@ function upload_doll(){
           <div class="mx-auto col-10">
             <h4>发布成功！</h4>
             <p>${data.back}</p>
-            <a class="btn btn-primary" href="home.html">确认</a>
+            <a class="btn btn-primary" href="user.html">确认</a>
           </div>
         </div>
       </div>
@@ -89,6 +89,6 @@ function upload_doll(){
   })
   .catch((err)=>{
     console.log('Erro', err.massage);
-    alert('Erro', err.massage)
   })
 }
+

@@ -120,7 +120,8 @@ def login():
         recID = resp['records'][0]['id']
 
         if bcrypt.check_password_hash(user_password, auth.password):#active不用管
-            token = jwt.encode({'id' : recID, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+            #token = jwt.encode({'id' : recID, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+            token = jwt.encode({'id' : recID}, app.config['SECRET_KEY'])
             return jsonify({'token' : token})
     
     except Exception as e:
@@ -146,6 +147,26 @@ def get_user(current_user):
     
     return jsonify(resp['fields'])
 
+@app.route('/user_doll',methods=['GET'])
+@token_required
+def get_user_doll(current_user):
+
+    print('user in doll'+ current_user)
+    url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/tblOP9q7NQnpLgvgZ?filterByFormula=Owner_rec%3D%22"+current_user+"%22"
+    #"https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/tblG4Gox7SQ51AGew?filterByFormula=UserName%3D%22"+auth.username+"%22"
+
+    headers = {
+        'Authorization': 'Bearer '+AIRTABLE_KEY,
+    }
+
+    r = requests.get(url, headers=headers)
+    print("Status Code for dolls:",r.status_code)
+
+    resp = r.json()
+    print(resp)
+
+    return jsonify({'back':resp['records']})
+    
 @app.route('/user_post',methods=['GET'])
 @token_required
 def get_user_post(current_user):
@@ -350,21 +371,27 @@ def allowed_file(filename):
 
 
 @app.route('/upload/doll', methods=['POST'])
-#@token_required
-#def upload_doll(current_user):
-def upload_doll():
+@token_required
+def upload_doll(current_user):
+#def upload_doll():
     rec = request.get_json()
     print (rec)
+    print ('user',current_user)
     #return jsonify({'back':'got URl'})
-    url = "POST https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Doll"
+    url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Doll"
 
     data ={
       "fields": {
-        "u_id": u_id ,
-        "UserName": rec['name'],
-        "Email" : rec['email'],
-        "Password": hashed_password,
-        "Type" : rec['type']
+         "Owner": [
+          current_user
+        ],
+        "DollName": rec['doll_name'],
+        "Image": [
+          {
+            "url": rec['doll_img']
+          }
+        ],
+        "Attribute": rec['doll_attribute']
       }
     }
 
@@ -379,7 +406,45 @@ def upload_doll():
 
     print(resp)
 
-    return jsonify({'back':resp['records']})
+    return jsonify({'back':resp['createdTime']})
+
+@app.route('/upload/post', methods=['POST'])
+@token_required
+def upload_post(current_user):
+    rec = request.get_json()
+    print (rec)
+    print ('user',current_user)
+    #return jsonify({'back':'got URl'})
+    url = "https://api.airtable.com/v0/appYTQ3wqtGFV1bI7/Plaza"
+
+    data ={
+      "fields": {
+        "Poster_id": [
+          current_user
+        ],
+        "Title": rec['post_title'],
+        "Content": rec['post_content'],
+        "Image": [
+          {
+            "url": rec['post_img']
+          }
+        ],
+      }
+    }
+
+    headers = {
+    'Authorization': 'Bearer '+AIRTABLE_KEY, 'Content-Type': 'application/json'
+    }
+
+    r = requests.post(url,json=data,headers=headers)
+    print("Status Code:",r.status_code)
+
+    resp = r.json()
+
+    print(resp)
+
+    return jsonify({'back':resp['createdTime']})
+
 
 
 if __name__ == '__main__':
