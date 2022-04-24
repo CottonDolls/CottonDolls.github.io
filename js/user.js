@@ -7,7 +7,7 @@ $(document).ready(function(){
     //get_post();
     $("#basic_info").append(`
     <a class="btn btn-light" href="./wama/wamaindex.html">娃妈模式</a> 
-    <a class="btn btn-light" onclick="logout()">登出</a> 
+    <a class="btn btn-light" href="#" onclick="logout()">登出</a> 
     `)
   }
   else{
