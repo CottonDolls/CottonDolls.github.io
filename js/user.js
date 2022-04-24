@@ -5,7 +5,10 @@ $(document).ready(function(){
   if (token != null){
     get_user(token);
     //get_post();
-    $("#basic_info").append(`<a class="btn btn-light" href="login.html" onclick="logout()">登出</a> `)
+    $("#basic_info").append(`
+    <a class="btn btn-light" href="./wama/wamaindex.html">娃妈模式</a> 
+    <a class="btn btn-light" onclick="logout()">登出</a> 
+    `)
   }
   else{
     $("#UserName").text('未登录，请登录！')
