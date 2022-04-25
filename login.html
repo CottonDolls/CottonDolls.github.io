@@ -54,7 +54,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <input type="password" class="form-control" placeholder="Password" id="l_password"> 
           </div> 
           <p>没有账号？<a href="register.html">去注册>>>>></a></p>
-          <button type="button" class="btn btn-primary mt-4" onclick="login()">Submit</button>          
+          <button type="button" class="btn btn-primary mt-4" onclick="login()" id="welcomeyeah">Submit</button>          
         </form>
       </div>
     </div>
@@ -88,7 +88,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </nav>
   </footer>
+  <script>
+    document.getElementById('welcomeyeah').addEventListener("click", welcomeyeah);
 
+function welcomeyeah() {
+alert("欢迎你的到来喔！");
+}
+  </script>
   <script type="text/javascript" src="./js/account.js"></script>
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
  
