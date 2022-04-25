@@ -49,7 +49,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h6 class="mb-3">付费推广计划</h6>
         <div class="container">
           <div class="row">
-           <img id="img" class="img-fluid" src="../imgs/banner/180.png">
+           <img id="img" class="img-fluid" src="../imgs/banner/180.png" id="shopin" onclick="shopin()">
           </div>
         </div>
       </div>
@@ -110,6 +110,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </nav>
   </footer>
+    <script>
+    document.getElementById('shopin').addEventListener("click", shopin);
+
+function shopin() {
+alert("谢谢你的申请，我们会尽快跟你联系哦～");
+}
+  </script>
    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
    <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
