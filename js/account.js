@@ -124,6 +124,6 @@ function get_user(){
 function logout(){
   localStorage.removeItem("BA");
   localStorage.removeItem("token");
-  //window.location.href = 'index.html';
+  window.location.href = 'user.html';
 }
 
