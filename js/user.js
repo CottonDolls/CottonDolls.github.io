@@ -58,7 +58,7 @@ function get_user(token){
 function logout(){
   localStorage.removeItem("BA");
   localStorage.removeItem("token");
-  //window.location.href = 'index.html';
+  window.location.href = 'user.html';
 }
 ///////////////////////Logout////////////////////////////////
 function get_post(token){
