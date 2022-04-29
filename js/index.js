@@ -34,7 +34,7 @@ $(document).ready(function(){
               <div class="card-body">
                 <p class="card-text small">${element.fields.Title}</p>
                 <div class="row">
-                  <div class="col-4 d-flex align-items-center"> <img class="rounded-circle" src="https://static.pingendo.com/img-placeholder-2.svg" width="30"> </div>
+                  <div class="col-4 d-flex align-items-center"> <img class="rounded-circle" src="./imgs/Cotton doll LOGO/photo.svg" width="30"> </div>
                   <div class="col-8 d-flex align-items-center">
                     <p class="mt-2 small" >${element.fields.Poster} </p>
                   </div>
